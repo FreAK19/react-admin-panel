@@ -1,0 +1,32 @@
+{
+	"cards": [
+		{
+			"id": 1,
+			"color": "#58b5fc",
+			"title": "Total order",
+			"count": 220,
+			"icon": "http://localhost:8080/src/assets/img/icon/order.png"
+		},
+		{
+			"id": 2,
+			"color": "#61d861",
+			"title": "Total completed order",
+			"count": 180,
+			"icon": "http://localhost:8080/src/assets/img/icon/completed.png"
+		},
+		{
+			"id": 3,
+			"color": "#7965f1",
+			"title": "Total pending order",
+			"count": 20,
+			"icon": "http://localhost:8080/src/assets/img/icon/pending.png"
+		},
+		{
+			"id": 4,
+			"color": "#ff625b",
+			"title": "Total cancelled order",
+			"count": 25,
+			"icon": "http://localhost:8080/src/assets/img/icon/cancelled.png"
+		}
+	]
+}
