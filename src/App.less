@@ -4,26 +4,42 @@
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 /*  Main  */
 body {
-  font-family: Lato, Roboto, Halvetica, Tahoma, sans-serif;
-  font-style: normal;
-  font-weight: 400;
+	font-family: Lato, Roboto, Halvetica, Tahoma, sans-serif;
+	font-style: normal;
+	font-weight: 400;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: inherit;
+	font-weight: inherit;
 }
 
 .container-fluid {
 	width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin: 0 auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin: 0 auto;
 }
 
+.flex-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.full-width {
+	height: 100vh;
+	width: 100vw
+}
+
+.login {
+	background: url("./assets/img/bg-login.jpg") no-repeat center 62%;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
