@@ -1,7 +1,4 @@
-import {
-	PENDING,
-	FETCHING_FAILURE,
-	FETCHING_SUCCESS} from '../index'
+import {PENDING, FETCHING_FAILURE, FETCHING_SUCCESS} from '../index';
 
 //	when request is pending
 const fetching = () => ({
@@ -12,10 +9,10 @@ const fetching = () => ({
 });
 
 // 	response successful
-const responseSuccess = data => ({
+const responseSuccess = (key, data) => ({
 	type: FETCHING_SUCCESS,
 	payload: {
-		cards: data,
+		[key]: data,
 		error: false,
 		loaded: true,
 		pending: false
@@ -32,7 +29,7 @@ const responseFailure = error => ({
 });
 
 //	make request
-const makeResponse = url => (dispatch, getState) => {
+const makeResponse = (key, url) => (dispatch, getState) => {
 	const { loaded, pending } = getState().cards;
 
 	//	if data is presenting return nothing
@@ -40,12 +37,15 @@ const makeResponse = url => (dispatch, getState) => {
 
 	//	show spinner
 	dispatch(fetching());
-	return window.fetch(url)
-		.then(response => response.json()
-			.then(data => {
-				dispatch(responseSuccess(data))
-			})).catch(error => dispatch(responseFailure(error)))
+	return window
+		.fetch(url)
+		.then(response =>
+			response.json().then(data => {
+				dispatch(responseSuccess(key, data));
+			})
+		)
+		.catch(error => dispatch(responseFailure(error)));
 };
 
 export default makeResponse;
-
+export {fetching};
