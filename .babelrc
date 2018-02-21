@@ -1,24 +1,24 @@
 {
   "presets": [
     [
-      "@babel/preset-es2015",
+      "es2015",
       {
         "modules": false
       }
     ],
-    "@babel/preset-react",
-    "@babel/preset-flow"
+    "react",
+    "flow"
   ],
   "plugins": [
     "react-hot-loader/babel",
-    "@babel/plugin-proposal-object-rest-spread",
+		["transform-object-rest-spread"],
     "babel-plugin-transform-class-properties",
     "syntax-dynamic-import"
   ],
   "env": {
     "test": {
       "presets": [
-        "@babel/preset-react"
+        "react"
       ],
       "plugins": [
         "transform-es2015-modules-commonjs"
