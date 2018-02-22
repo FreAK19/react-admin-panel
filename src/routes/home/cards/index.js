@@ -1,8 +1,4 @@
-import {
-	PENDING,
-	FETCHING_FAILURE,
-	FETCHING_SUCCESS
-} from "../../../action/index";
+import {PENDING, FETCHING_FAILURE, FETCHING_SUCCESS} from '../../../action/index';
 
 const INITIAL_STATE = {
 	cards: [],
@@ -21,7 +17,7 @@ const cardsReducer = (state = INITIAL_STATE, action) => {
 				...action.payload
 			};
 		default:
-			return state
+			return state;
 	}
 };
 export default cardsReducer;

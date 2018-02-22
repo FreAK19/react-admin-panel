@@ -1,5 +1,5 @@
-import React from 'react'
-import Logo from '../components/Logo'
+import React from 'react';
+import Logo from '../components/Logo';
 
 test('Logo should render correctly', () => {
 	const component = shallow(<Logo />);
