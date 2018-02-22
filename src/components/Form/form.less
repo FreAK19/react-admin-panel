@@ -1,9 +1,12 @@
+@text-color: #9e9c9a;
+@link-color: #75c0f6;
 
 .form {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 	max-width: 400px;
-	padding: 3rem 4rem;
+	padding: 1rem 4rem 2rem 4rem;
 
 	&__label--hidden {
 		text-indent: -9999px;
@@ -13,9 +16,26 @@
 	}
 
 	&__link {
-		color: #75c0f6;
+		color: @link-color;
 		text-decoration: none;
 		margin-top: 1rem;
-		font-style: 14px;
+		font-size: 14px;
+	}
+
+	&__caption {
+		color: @text-color;
+		text-align: center;
+
+		& > p {
+			text-transform: uppercase;
+			margin: 0;
+		}
+
+		// 	override inline style from material-ui
+		& > svg {
+			color: @text-color !important;
+			height: 80px !important;
+			width: 80px !important;
+		}
 	}
 }

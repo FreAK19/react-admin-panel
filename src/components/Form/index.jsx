@@ -2,20 +2,22 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
+import AccountIcon from 'material-ui/svg-icons/action/account-circle';
 import Checkbox from 'material-ui/Checkbox';
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import './form.less';
 
-type Props = {
+type;
+Props = {
 	action: string,
 	onSubmit: Function
 };
 
-type State = {
+type;
+State = {
 	firstName: string,
 	password: string,
-	remember: string | boolean,
-	disable: boolean
+	remember: string | boolean
 };
 
 export default class Form extends Component<Props, State> {
@@ -45,16 +47,20 @@ export default class Form extends Component<Props, State> {
 		return (
 			<Paper zDepth={3}>
 				<form action={action} method="post" className="form">
-					<label htmlFor="firstName" className="form__label--hidden">
+					<div className="form__caption">
+						<AccountIcon/>
+						<p>User Login</p>
+					</div>
+					<label htmlFor="user-email" className="form__label--hidden">
 						FirstName
 					</label>
 					<TextField
-						name="firstName"
-						type="text"
+						name="email"
+						type="email"
 						fullWidth
 						onChange={this.handleChange}
-						id="firstName"
-						floatingLabelText="First Name"
+						id="user-email"
+						floatingLabelText="Email address"
 					/>
 					<label htmlFor="psw" className="form__label--hidden">
 						Password
@@ -71,17 +77,20 @@ export default class Form extends Component<Props, State> {
 						}}
 					/>
 					<Checkbox
-						defaultChecked
+						defaultChecked={false}
 						name="remember"
 						label="Remember me"
 						labelPosition="right"
 						onCheck={this.handleChange}
 						style={{
-							marginBottom: '0.5rem'
+							marginBottom: '0.5rem',
+							fontSize: '14px'
 						}}
 					/>
 					<RaisedButton label="Sign in" onClick={this.handleSignInClick} primary fullWidth />
-					<Link to="forgot/" className="form__link">Forgot password?</Link>
+					<Link to="forgot/" className="form__link">
+						Forgot password?
+					</Link>
 				</form>
 			</Paper>
 		);
