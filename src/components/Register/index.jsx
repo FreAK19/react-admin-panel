@@ -2,10 +2,8 @@ import React, {Component} from 'react';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
-import AccountIcon from 'material-ui/svg-icons/action/account-circle';
-import Checkbox from 'material-ui/Checkbox';
-import {Link} from 'react-router-dom';
-import './form.less';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import RegisterIcon from 'material-ui/svg-icons/action/perm-identity';
 
 type;
 Props = {
@@ -16,9 +14,11 @@ Props = {
 type;
 State = {
 	firstName: string,
+	lastName: string,
 	password: string,
-	remember: string | boolean,
-	disable: boolean
+	email: string,
+	age: '',
+
 };
 
 export default class Form extends Component<Props, State> {
@@ -35,7 +35,7 @@ export default class Form extends Component<Props, State> {
 		});
 	};
 
-	handleSignInClick = () => {
+	handleSignUpClick = () => {
 		this.props.onSubmit(this.state);
 		this.setState({
 			firstName: '',
@@ -47,13 +47,38 @@ export default class Form extends Component<Props, State> {
 		const {action} = this.props;
 		return (
 			<Paper zDepth={3}>
-				<form action={action} method="post" className="form">
-					<div className="form__caption">
-						<AccountIcon/>
-						<p>User Login</p>
+				<form action={action} method="post" className="form form--register">
+					<div className="form__caption form__caption--register">
+						<RegisterIcon/>
+						<p>Register</p>
 					</div>
-					<label htmlFor="user-email" className="form__label--hidden">
+
+					<label htmlFor="firstName" className="form__label--hidden">
 						FirstName
+					</label>
+					<TextField
+						name="firstName"
+						type="text"
+						fullWidth
+						onChange={this.handleChange}
+						id="firstName"
+						floatingLabelText="First Name"
+					/>
+
+					<label htmlFor="lastName" className="form__label--hidden">
+						LastName
+					</label>
+					<TextField
+						name="text"
+						type="lastName"
+						fullWidth
+						onChange={this.handleChange}
+						id="lastName"
+						floatingLabelText="Last Name"
+					/>
+
+					<label htmlFor="user-email" className="form__label--hidden">
+						Email
 					</label>
 					<TextField
 						name="email"
@@ -63,6 +88,7 @@ export default class Form extends Component<Props, State> {
 						id="user-email"
 						floatingLabelText="Email address"
 					/>
+
 					<label htmlFor="psw" className="form__label--hidden">
 						Password
 					</label>
@@ -73,25 +99,24 @@ export default class Form extends Component<Props, State> {
 						fullWidth
 						onChange={this.handleChange}
 						floatingLabelText="Password"
-						style={{
-							marginBottom: '0.5rem'
-						}}
 					/>
-					<Checkbox
-						defaultChecked={false}
-						name="remember"
-						label="Remember me"
-						labelPosition="right"
-						onCheck={this.handleChange}
-						style={{
-							marginBottom: '0.5rem',
-							fontSize: '14px'
-						}}
-					/>
-					<RaisedButton label="Sign in" onClick={this.handleSignInClick} primary fullWidth/>
-					<Link to="forgot/" className="form__link">
-						Forgot password?
-					</Link>
+
+					<RadioButtonGroup
+						onChange={this.handleChange}
+						name="gender"
+						defaultSelected="male"
+						className="form__radio-group"
+					>
+						<RadioButton
+							value="female"
+							label="Female"
+						/>
+						<RadioButton
+							value="male"
+							label="Male"
+						/>
+					</RadioButtonGroup>
+					<RaisedButton label="Register" onClick={this.handleSignUpClick} primary fullWidth/>
 				</form>
 			</Paper>
 		);

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import {func} from 'prop-types';
 import Form from '../../components/Form';
+import RegisterForm from '../../components/Register';
 import {post} from '../../action/actionCreator/login';
 
 const mapStateToProps = state => ({});
@@ -23,10 +24,10 @@ const Login = ({handleSubmit}) => (
 	<div className="flex-container full-width login">
 		<Tabs>
 			<Tab className="active" label="Sign In" style={style.tab}>
-				<Form action="login/auth.js" onSubmit={handleSubmit}/>
+				<Form action="user/auth.js" onSubmit={handleSubmit}/>
 			</Tab>
 			<Tab label="Register" style={style.tab}>
-				<Form action="login/auth.js" onSubmit={handleSubmit}/>
+				<RegisterForm action="user/register.js" onSubmit={handleSubmit}/>
 			</Tab>
 		</Tabs>
 	</div>

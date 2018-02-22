@@ -15,14 +15,14 @@ Props = {
 
 type;
 State = {
-	firstName: string,
+	email: string,
 	password: string,
 	remember: string | boolean
 };
 
 export default class Form extends Component<Props, State> {
 	state = {
-		firstName: '',
+		email: '',
 		password: '',
 		remember: false
 	};
@@ -37,7 +37,7 @@ export default class Form extends Component<Props, State> {
 	handleSignInClick = () => {
 		this.props.onSubmit(this.state);
 		this.setState({
-			firstName: '',
+			email: '',
 			password: ''
 		});
 	};
@@ -52,7 +52,7 @@ export default class Form extends Component<Props, State> {
 						<p>User Login</p>
 					</div>
 					<label htmlFor="user-email" className="form__label--hidden">
-						FirstName
+						Email
 					</label>
 					<TextField
 						name="email"
