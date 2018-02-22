@@ -1,4 +1,9 @@
 // @flow
-import rootReducer from '../routes/home/cards'
+import {combineReducers} from 'redux';
+import cardsReducer from '../routes/home/cards';
+import loginReducer from '../routes/login/reducer';
 
-export default rootReducer;
+export default combineReducers({
+	cards: cardsReducer,
+	login: loginReducer
+});

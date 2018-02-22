@@ -9,7 +9,7 @@ const fetching = () => ({
 });
 
 // 	response successful
-const responseSuccess = (key, data) => ({
+const responseSuccess = (key = 'data', data) => ({
 	type: FETCHING_SUCCESS,
 	payload: {
 		[key]: data,
@@ -30,7 +30,7 @@ const responseFailure = error => ({
 
 //	make request
 const makeResponse = (key, url) => (dispatch, getState) => {
-	const { loaded, pending } = getState().cards;
+	const {loaded, pending} = getState()[key];
 
 	//	if data is presenting return nothing
 	if (loaded || pending) return null;
@@ -48,4 +48,4 @@ const makeResponse = (key, url) => (dispatch, getState) => {
 };
 
 export default makeResponse;
-export {fetching};
+export {fetching, responseSuccess, responseFailure};
