@@ -31,6 +31,13 @@ class Table {
 		return this;
 	}
 
+	getItemStartWith(key, char) {
+		this.con.query(`SELECT * FROM ${this.name} WHERE ${key} LIKE '${char}%'`, (err, data) => {
+			if (err) throw err;
+			return data;
+		})
+	}
+
 	getWhere(key, value) {
 		this.con.query(`SELECT * FROM ${this.name} WHERE ${key} = '${value}'`, (err, data) => {
 			if (err) throw err;
@@ -101,12 +108,19 @@ class Table {
 		return this;
 	}
 
-	//	update table row based on user ID
+	//	update table row based on user ID or object of column name
 	//	field: string - what field to change
 	//	id: number | string - id of user that should change
+	//	query: {} - obj of property that will be as filter
 
-	update(field, value, id) {
-		const sql = `UPDATE ${this.name} SET ${field} = '${value}' WHERE id = '${parseInt(id, 10)}'`;
+	update(field, value, query) {
+		let sql = ' ';
+		if (isObject(query)) {
+			sql = `UPDATE ${this.name} SET ${field} = '${value}' WHERE ${Object.keys(query)[0]} = '${Object.values(query)[0]}'`;
+		} else if(typeof query === 'number') {
+			sql = `UPDATE ${this.name} SET ${field} = '${value}' WHERE id = '${parseInt(query, 10)}'`;
+		}
+
 		this.con.query(sql, err => {
 			if (err) throw err;
 		});
