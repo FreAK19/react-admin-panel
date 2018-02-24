@@ -39,7 +39,7 @@ class Table {
 	}
 
 	getWhere(key, value) {
-		this.con.query(`SELECT * FROM ${this.name} WHERE ${key} = '${value}'`, (err, data) => {
+		this.con.query(`SELECT * FROM ${this.name} WHERE ${key} = ?`, [value], (err, data) => {
 			if (err) throw err;
 			return data;
 		})
