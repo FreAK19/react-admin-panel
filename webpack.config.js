@@ -94,7 +94,7 @@ module.exports = function(env) {
       {
         entry: {
           app: PATH.app,
-          vendor: ["react"]
+          vendors: ["react"]
         },
       },
       common,

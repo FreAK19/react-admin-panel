@@ -90,7 +90,7 @@ module.exports = {
 			prettyPrint: true
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
-			name: 'vendor'
+			name: ['vendors', 'manifest']
 		}),
 		new HtmlWebpackPlugin({
 			inject: true,
